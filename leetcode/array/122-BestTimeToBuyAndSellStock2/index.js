@@ -22,16 +22,16 @@ let maxProfit = function(prices) {
   let maxProfit = 0;
   
   while (i < prices.length - 1) {
-      while (i < prices.length - 1 && prices[i] >= prices[i + 1]) {
-          i++;
-      }
-      valley = prices[i];
-      while (i < prices.length - 1 && prices[i] <= prices[i + 1]) {
-          i++;
-      }
-      peak = prices[i];
+    while (i < prices.length - 1 && prices[i] >= prices[i + 1]) {
+      i++;
+    }
+    valley = prices[i];
+    while (i < prices.length - 1 && prices[i] <= prices[i + 1]) {
+      i++;
+    }
+    peak = prices[i];
 
-      maxProfit += peak - valley;
+    maxProfit += peak - valley;
   }
   return maxProfit;
 };
@@ -45,11 +45,11 @@ console.log(maxProfit(prices)); // maxProfit: 4 + 3 = 7
  */
 let maxProfit1 = function(prices) {
   let maxProfit = 0;
-
+  
   for (let i = 1; i < prices.length; i++) {
-      if (prices[i] > prices[i - 1]) {
-          maxProfit += prices[i] - prices[i - 1];
-      }
+    if (prices[i] > prices[i - 1]) {
+      maxProfit += prices[i] - prices[i - 1];
+    }
   }
 
   return maxProfit;
