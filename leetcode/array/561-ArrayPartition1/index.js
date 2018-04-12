@@ -22,14 +22,15 @@
  */
 let arrayPairSum = function(nums) {
   const sortedNums = nums.sort((a, b) => {
-      return a - b;
+    return a - b;
   });
+
   let sum = 0;
   
   for (let i = 0; i < sortedNums.length - 1; i += 2) {
-      sum += sortedNums[i];
+    sum += sortedNums[i];
   }
-  
+
   return sum;
 };
 

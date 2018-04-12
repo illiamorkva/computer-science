@@ -1,0 +1,25 @@
+<html>
+  <head></head>
+  <body>
+    <div>
+      debug
+    </div>
+    <script>
+      let moveZeroes = function (nums) {
+        let lastNonZeroFound = 0;
+      
+        for (let i = 0; i < nums.length; i++) {
+          if (nums[i] != 0) {
+            let temp = nums[lastNonZeroFound];
+            nums[lastNonZeroFound] = nums[i];
+            nums[i] = temp;
+                  
+            lastNonZeroFound++
+          }
+        }
+      };
+      
+      moveZeroes([1,2,3,0,4,0,5])    
+    </script>
+  </body>
+</html>
