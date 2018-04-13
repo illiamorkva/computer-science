@@ -34,3 +34,29 @@ let majorityElement = function(nums) {
 };
 
 console.log(majorityElement([1, 3, 3, 3])); // 3
+
+/**
+ * Approach #6 Boyer-Moore Voting Algorithm
+ * @param {number[]} nums
+ * @return {number}
+ */
+majorityElement = function(nums) {
+  let candidate = null;
+  let count = 0;
+  
+  for (let i = 0; i < nums.length; i++) {
+    if (count == 0) {
+      candidate = nums[i];
+    }
+      
+    if (candidate == nums[i]) {
+      count++;
+    } else {
+      count--;
+    }
+  }
+  
+  return candidate;
+};
+
+console.log(majorityElement([1, 3, 3, 3])); // 3
