@@ -68,3 +68,30 @@ let myReverse = (word) => {
 }
 
 console.log(reverseWords("Let's take LeetCode contest")) // s'teL ekat edoCteeL tsetnoc
+
+/**
+ * Approach #3 Using reverse method
+ * @param {string} s
+ * @return {string}
+ */
+reverseWords = function(s) {
+  const result = [];
+  let word = [];
+  
+  for (let i = 0; i < s.length; i++) {
+      if (s.charAt(i) != ' ') {
+          word.push(s.charAt(i));
+      } else {
+          word.reverse();
+          result.push(word.join(''));
+          result.push(' ');
+          word = [];
+      }
+  }
+  word.reverse();
+  result.push(word.join(''));
+  
+  return result.join('');
+};
+
+console.log(reverseWords("Let's take LeetCode contest")) // s'teL ekat edoCteeL tsetnoc
