@@ -55,6 +55,7 @@ the one-to-one mapping relationship between the input and the output.
  */
 const tree2str = function(t) {
   // We simply need to do the preorder traversal of the given Binary Tree.
+  // Since, for the preorder traversal, we know, we need to process the nodes in the order current-left-right.
   // To do the preorder traversal, we make use of recursion.
   if (t == null || t.val == null) {
       return '';
