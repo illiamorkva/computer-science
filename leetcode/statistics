@@ -11,7 +11,8 @@ Apr
 20 - 606, 686, 541, 521
 23 - 728, 268
 24 - 326, 453, 628
-25 - 167, 278, 26,  27,
+25 - 167, 278, 26,  27
+26 - 344,
 
 Done with help:
 
@@ -28,6 +29,6 @@ To solve problems next:
 
 to learn and understand:
 
-https://discuss.leetcode.com/topic/105580/repeated-string-match/6 - example of time complexity analysis from 686
-
-https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms
+1. https://discuss.leetcode.com/topic/105580/repeated-string-match/6 - example of time complexity analysis from 686
+2. https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms
+3. "String is encoded using ASCII format. This will not work with Unicode value where one character may be more than 1 byte."
