@@ -1,9 +1,9 @@
 Solved:
 
 Apr
-8 - 561(2)
+8  - 561
 10 - 122
-12 - 283, 169(2)
+12 - 283, 169
 16 - 217
 17 - 14
 18 - 657, 557
@@ -11,16 +11,19 @@ Apr
 20 - 606, 686, 541, 521
 23 - 728, 268
 24 - 326, 453, 628
-25 - 167, 278, 26
+25 - 167, 278, 26,  27
+26 - 344
+27 - 136, 191, 693,
 
 Done with help:
 
 122, 283, 14, 557, 696, 606, 541, 521
-453, 628, 26,
+453, 628, 26, 27,
 
 Done by myself but need attention:
 
-561, 169, 686, 268, 326, 278
+561, 169, 686, 268, 326, 278, 136, 191
+
 
 Need to be done:
 
@@ -28,6 +31,6 @@ To solve problems next:
 
 to learn and understand:
 
-https://discuss.leetcode.com/topic/105580/repeated-string-match/6 - example of time complexity analysis from 686
-
-https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms
+1. https://discuss.leetcode.com/topic/105580/repeated-string-match/6 - example of time complexity analysis from 686
+2. https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms
+3. "String is encoded using ASCII format. This will not work with Unicode value where one character may be more than 1 byte."
