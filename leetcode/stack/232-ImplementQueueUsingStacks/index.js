@@ -149,3 +149,19 @@ MyQueue.prototype.peek = function() {
 MyQueue.prototype.empty = function() {
   return !this.main.length && !this.support.length ? true : false;
 };
+
+/**
+ * Example of Stack implementation in js
+ */
+const stack = new Stack();
+
+const Stack = function() {
+  const list = [];
+
+  this.push = (x) => {
+      list.push(x);
+  };
+  this.bottom = () => list[list.length - 1];
+  this.pop = () => list.pop();
+  this.isEmpty = () => list.length === 0;
+}

@@ -17,12 +17,12 @@ Apr
 30 - 237, 206, 21,  83, 682, 496
 
 May
-1  - 232,
+1  - 232, 225
 
 Done with help:
 
 122, 283, 14, 557, 696, 606, 541, 521
-453, 628, 26, 27,  237, 21,  496,
+453, 628, 26, 27,  237, 21,  496, 225
 
 Done by myself but need attention:
 
@@ -38,3 +38,4 @@ to learn and understand:
 1. https://discuss.leetcode.com/topic/105580/repeated-string-match/6 - example of time complexity analysis from 686
 2. https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms
 3. "String is encoded using ASCII format. This will not work with Unicode value where one character may be more than 1 byte."
+4. https://leetcode.com/problems/implement-queue-using-stacks/solution/ - example of time complexity analysis from 232
