@@ -1,3 +1,5 @@
+!number (!784) - tried but did not solve and understand.
+
 Solved:
 
 Apr
@@ -17,23 +19,23 @@ Apr
 30 - 237, 206, 21,  83, 682, 496
 
 May
-1  - 232, 225
+1  - 232, 225, !784, !526
+3  - 46,
 
-Done with help:
+Solved with help:
 
 122, 283, 14, 557, 696, 606, 541, 521
 453, 628, 26, 27,  237, 21,  496, 225
+46,  
 
-Done by myself but need attention:
+Solved by myself but need attention:
 
 561, 169, 686, 268, 326, 278, 136, 191
 206, 83,  682, 232,
 
-Need to be done:
-
 To solve problems next:
 
-to learn and understand:
+To learn and understand:
 
 1. https://discuss.leetcode.com/topic/105580/repeated-string-match/6 - example of time complexity analysis from 686
 2. https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms
