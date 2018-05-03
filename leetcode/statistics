@@ -20,13 +20,13 @@ Apr
 
 May
 1  - 232, 225, !784, !526
-3  - 46, 47
+3  - 46,  47,  78,
 
 Solved with help:
 
 122, 283, 14, 557, 696, 606, 541, 521
 453, 628, 26, 27,  237, 21,  496, 225
-46,  47,
+46,  47,  78,
 
 Solved by myself but need attention:
 
@@ -41,3 +41,6 @@ To learn and understand:
 2. https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms
 3. "String is encoded using ASCII format. This will not work with Unicode value where one character may be more than 1 byte."
 4. https://leetcode.com/problems/implement-queue-using-stacks/solution/ - example of time complexity analysis from 232
+5. https://leetcode.com/problems/permutations-ii/discuss/18594/Really-easy-Java-solution-much-easier-than-the-solutions-with-very-high-vote -
+how does it work - if(i>0 &&nums[i-1]==nums[i] && !used[i-1])?
+6. 
