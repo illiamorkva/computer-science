@@ -1,17 +1,19 @@
 /**
-52. N-Queens II
-https://leetcode.com/problems/subsets-ii/description/
+51. N-Queens
+https://leetcode.com/problems/n-queens/description/
 
-The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
+The n-queens puzzle is the problem of placing n queens on an n×n chessboard
+such that no two queens attack each other.
 
-Given an integer n, return the number of distinct solutions to the n-queens puzzle.
+Given an integer n, return all distinct solutions to the n-queens puzzle.
+
+Each solution contains a distinct board configuration of the n-queens' placement,
+where 'Q' and '.' both indicate a queen and an empty space respectively.
 
 Example:
 
 Input: 4
-Output: 2
-Explanation: There are two distinct solutions to the 4-queens puzzle as shown below.
-[
+Output: [
  [".Q..",  // Solution 1
   "...Q",
   "Q...",
@@ -22,6 +24,7 @@ Explanation: There are two distinct solutions to the 4-queens puzzle as shown be
   "...Q",
   ".Q.."]
 ]
+Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.
 */
 
 // time complexity - https://stackoverflow.com/a/20050433/5818414
@@ -29,9 +32,9 @@ Explanation: There are two distinct solutions to the 4-queens puzzle as shown be
 /**
  * My Backtracking
  * @param {number} n
- * @return {number}
+ * @return {string[][]}
  */
-const totalNQueens = function(n) {
+const solveNQueens = function(n) {
   // create a board of dots
   const board = new Array(n);
   
@@ -45,18 +48,24 @@ const totalNQueens = function(n) {
     }
   }
 
-  let result = { counter: 0 };
+  let result = [];
   
   queensHelper(board, 0, result);
   
-  return result.counter;
+  return result;
 };
 
 function queensHelper(board, col, result) {
   if (col >= board.length) {
     // base case
 
-    result.counter++;
+    const boardWithStrings = [...board];
+    
+    for (let i = 0; i < boardWithStrings.length; i++) {
+      boardWithStrings[i] = boardWithStrings[i].join('');
+    }
+    
+    result.push(boardWithStrings);
 
   } else {
     // recursive case + backtracking
