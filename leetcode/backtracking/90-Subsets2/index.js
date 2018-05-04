@@ -1,11 +1,30 @@
-<html>
-  <head></head>
-  <body>
-    <div>
-      debug
-    </div>
-    <script>
+/**
+90. Subsets II
+https://leetcode.com/problems/subsets-ii/description/
 
+Given a collection of integers that might contain duplicates, nums, return all possible subsets (the power set).
+
+Note: The solution set must not contain duplicate subsets.
+
+Example:
+
+Input: [1,2,2]
+Output:
+[
+  [2],
+  [1],
+  [1,2,2],
+  [2,2],
+  [1,2],
+  []
+]
+*/
+
+/**
+ * Another example of backtracking
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
 const subsetsWithDup = function(nums) {
   const result = [];
   const chosen = [];
@@ -18,10 +37,8 @@ const subsetsWithDup = function(nums) {
 };
 
 function helper(result, chosen, nums, start) {
-  console.log('in helper chosen', chosen);
   result.push([...chosen]);
-  console.log('in helper result', result);
-
+  
   for (let i = start; i < nums.length; i++) {
     if (i > start && nums[i] == nums[i - 1]) {
       continue; // skip duplicates
@@ -35,11 +52,4 @@ function helper(result, chosen, nums, start) {
     // unchoose
     chosen.pop();
   }
-  console.log('out helper chosen', chosen);
-  console.log('out helper result', result);
 }
-      
-console.log(subsetsWithDup([1,2,2]));
-    </script>
-  </body>
-</html>
