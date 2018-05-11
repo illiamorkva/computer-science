@@ -41,25 +41,25 @@ To solve problems next:
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-To Do:
 
-1. Implement common data structures in JS and use their API to solve problems.
 
 To learn and understand:
 
-1. https://discuss.leetcode.com/topic/105580/repeated-string-match/6 - example of time complexity analysis from 686
+1. Example of time complexity analysis from 686
+https://discuss.leetcode.com/topic/105580/repeated-string-match/6
 
 2. https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms
 
 3. "String is encoded using ASCII format. This will not work with Unicode value where one character may be more than 1 byte."
 
-4. https://leetcode.com/problems/implement-queue-using-stacks/solution/ - example of time complexity analysis from 232
+4. Example of time complexity analysis from 232
+https://leetcode.com/problems/implement-queue-using-stacks/solution/
 
 5. https://leetcode.com/problems/permutations-ii/discuss/18594/Really-easy-Java-solution-much-easier-than-the-solutions-with-very-high-vote -
 how does it work - if(i>0 &&nums[i-1]==nums[i] && !used[i-1])?
 
-6. https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)?page=3 -
-A general approach to backtracking questions in Java (Subsets, Permutations, Combination Sum, Palindrome Partioning)
+6. A general approach to backtracking questions in Java (Subsets, Permutations, Combination Sum, Palindrome Partioning)
+https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)?page=3
 
 7. What is the difference between HashSet, HashMap and hash table?
 https://www.quora.com/What-is-the-difference-between-HashSet-HashMap-and-hash-table-How-do-they-behave-in-a-multi-threaded-environment
