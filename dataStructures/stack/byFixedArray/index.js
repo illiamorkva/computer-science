@@ -19,7 +19,12 @@ class FixedCapacityStackOfStrings {
 
   pop() {
     // --this.N - decrement N; then use to index into array
-    return this.s[--this.N];
+    const item = this.s[--this.N];
+    
+    // to avoid 'loitering'
+    this.s[this.N] = null;
+
+    return item;
   }
 }
 
