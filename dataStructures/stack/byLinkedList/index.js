@@ -5,6 +5,28 @@ class Node {
   }
 }
 
+class Iterator {
+  constructor(first) {
+    this.current = first;
+  }
+
+  hasNext() {
+    return this.current != null;
+  }
+
+  next() {
+    if (this.current == null) { // if (!this.hasNext())
+      throw Error('No more items in iteration');
+    }
+
+    const item = this.current.item;
+    
+    this.current = this.current.next;
+
+    return item;
+  }
+}
+
 class LinkedStackOfStrings {
   constructor() {
     this.first = null;
@@ -48,6 +70,10 @@ class LinkedStackOfStrings {
     // return saved item
     return item;
   }
+
+  iterator() {
+    return new Iterator(this.first);
+  }
 }
 
 const myStack = new LinkedStackOfStrings();
@@ -70,3 +96,19 @@ console.log('pop(): ', myStack.pop());
 console.log('pop(): ', myStack.pop());
 
 console.log('isEmpty(): ', myStack.isEmpty());
+
+myStack.push('1');
+myStack.push('2');
+myStack.push('3');
+myStack.push('4');
+
+const iterator = myStack.iterator();
+
+console.log('has next: ', iterator.hasNext()); // true
+
+console.log('next: ', iterator.next());
+console.log('next: ', iterator.next());
+console.log('next: ', iterator.next());
+console.log('next: ', iterator.next());
+
+console.log('has next: ', iterator.hasNext()); // false
