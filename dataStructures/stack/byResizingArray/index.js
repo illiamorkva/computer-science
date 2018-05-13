@@ -12,6 +12,12 @@ class ResizingArrayStackOfStrings {
     return this.N == 0;
   }
   
+  /*
+  * Average/Amortized Time Complexity
+  * O(1)
+  * Worst Time Complexity
+  * O(N)
+  */
   push(item) {
     if (this.N == this.s.length) {
       this._resize(2 * this.s.length);
@@ -21,6 +27,12 @@ class ResizingArrayStackOfStrings {
     this.s[this.N++] = item;
   }
 
+  /*
+  * Average/Amortized Time Complexity
+  * O(1)
+  * Worst Time Complexity
+  * O(N)
+  */
   pop() {
     // --this.N - decrement N; then use to index into array
     const item = this.s[--this.N];

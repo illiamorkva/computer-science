@@ -4,19 +4,31 @@ class FixedCapacityStackOfStrings {
     this.N = 0;
   }
 
-  // getAllCapacity() {
-  //   return this.s.length;
-  // }
+  size() {
+    return this.s.length;
+  }
 
   isEmpty() {
     return this.N == 0;
   }
   
+  /*
+  * Average/Amortized Time Complexity
+  * O(1)
+  * Worst Time Complexity
+  * O(1)
+  */
   push(item) {
     // this.N++ - use to index into array; then increment N
     this.s[this.N++] = item;
   }
 
+  /*
+  * Average/Amortized Time Complexity
+  * O(1)
+  * Worst Time Complexity
+  * O(1)
+  */
   pop() {
     // --this.N - decrement N; then use to index into array
     const item = this.s[--this.N];
@@ -48,5 +60,3 @@ console.log('pop(): ', myStack.pop());
 console.log('pop(): ', myStack.pop());
 
 console.log('isEmpty(): ', myStack.isEmpty());
-
-// console.log('capacity: ', myStack.getAllCapacity());

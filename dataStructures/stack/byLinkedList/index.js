@@ -2,7 +2,7 @@ class Node {
   constructor() {
     this.item = null;
     this.next = null;
-  }    
+  }
 }
 
 class LinkedStackOfStrings {
@@ -14,6 +14,12 @@ class LinkedStackOfStrings {
     return this.first == null;
   }
 
+  /*
+  * Average/Amortized Time Complexity
+  * O(1)
+  * Worst Time Complexity
+  * O(1)
+  */
   push(item) {
     // save a link to the list
     const oldFirst = this.first;
@@ -26,6 +32,12 @@ class LinkedStackOfStrings {
     this.first.next = oldFirst;
   }
 
+  /*
+  * Average/Amortized Time Complexity
+  * O(1)
+  * Worst Time Complexity
+  * O(1)
+  */
   pop() {
     // save item to return
     const item = this.first.item;
