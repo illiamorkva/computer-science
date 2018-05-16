@@ -74,6 +74,7 @@ class Node {
   }
 }
 
+// ordered iteration - yes
 class BST {
   constructor() {
     this._root = null;

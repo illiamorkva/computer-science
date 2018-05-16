@@ -12,6 +12,7 @@ class Node {
   }
 }
 
+// ordered iteration - yes
 class RedBlackBST {
   constructor() {
     this._root = null;
