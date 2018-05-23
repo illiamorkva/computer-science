@@ -1,4 +1,4 @@
-### separate chaining vs. linear probing
+# separate chaining vs. linear probing
 
 Separate chaining.
 
@@ -11,7 +11,7 @@ Linear probing.
 * Less wasted space.
 * Better cache performance.
 
-### hash tables vs. balanced search trees
+# hash tables vs. balanced search trees
 
 Hash tables.
 
