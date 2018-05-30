@@ -106,4 +106,111 @@ class TrieST {
    * @param {string} key 
    */
   delete(key) {}
+
+  /**
+   * All keys.
+   * To iterate through all keys in sorted order:
+   * 1. Do inorder traversal of trie; add keys encountered to a queue.
+   * 2. Maintain sequence of characters on path from root to node.
+   * 
+   * @returns {Iterable<string>}
+   */
+  keys() {
+    const queue = new Queue();
+
+    this._collect(this._root, "", queue);
+
+    return queue;
+  }
+
+  /**
+   * @param {Node} x 
+   * @param {string} prefix Sequence of characters on path from root to x.
+   * @param {Queue<string>} q 
+   */
+  _collect(x, prefix, q) {
+    if (x == null) {
+      // base case
+
+      return;
+    }
+
+    if (x._val != null) {
+      q.enqueue(prefix);
+    }
+
+    for (let c = 0; c < this._R; c++) {
+      // recursive case
+
+      this._collect(x._next[c], prefix + c, q);
+    }
+  }
+
+  /**
+   * Keys having prefix as a prefix.
+   * Find all keys in a symbol table starting
+   * with a given prefix.
+   * 
+   * @param {string} prefix
+   * @returns {Iterable<string>}
+   */
+  keysWithPrefix(prefix) {
+    const queue = new Queue();
+
+    // root of subtrie for all strings
+    // beginning with given prefix
+    const x = this._get(this._root, prefix, 0);
+
+    this._collect(x, prefix, queue);
+
+    return queue;
+  }
+
+  /**
+   * Longest key that is a prefix of query.
+   * Find longest key in symbol table that is a prefix
+   * of query string.
+   * 1. Search for query string.
+   * 2. Keep track of longest key encountered.
+   * 
+   * Note. Not the same as floor().
+   * 
+   * @param {string} query
+   * @returns {string}
+   */
+  longestPrefixOf(query) {
+    let length = this._search(this._root, query, 0, 0);
+    
+    return query.substring(0, length);
+  }
+
+  /**
+   * @param {Node} x 
+   * @param {string} query 
+   * @param {int} d 
+   * @param {int} length 
+   * @returns {int}
+   */
+  _search(x, query, d, length) {
+    if (x == null) {
+      // base case
+
+      return length;
+    }
+    
+    if (x._val != null) {
+      length = d;
+    }
+    
+    if (d == query.length) {
+      // base case
+
+      return length;
+    }
+    // recursive case
+
+    const c = query.charAt(d);
+
+    return this._search(x._next[c], query, d + 1, length);
+  }
 }
