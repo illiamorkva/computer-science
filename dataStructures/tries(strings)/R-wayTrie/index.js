@@ -69,7 +69,7 @@ class TrieST {
   /**
    * Time Complexity.
    * Search hit. O(L), where L is length of string.
-   * Search miss. O(logR N), where R is radix and N is number of strings
+   * Search miss. O(logR N), where R is radix and N is number of strings.
    * 
    * @param {string} key
    * @returns {value}
