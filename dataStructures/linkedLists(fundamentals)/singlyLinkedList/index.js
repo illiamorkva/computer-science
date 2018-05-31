@@ -1,3 +1,5 @@
+// good resource to learn with summary - https://leetcode.com/explore/learn/card/linked-list/
+
 class Node {
   /**
    * @param {number} value 
