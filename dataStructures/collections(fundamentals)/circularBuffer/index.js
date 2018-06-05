@@ -21,6 +21,9 @@ class CircularBuffer {
    * Add data to buffer.
    * This will overwrite older items if the buffer is full.
    * 
+   * Worst Time Complexity
+   * O(1)
+   * 
    * @param {any} val 
    */
   add(val) {
@@ -38,6 +41,10 @@ class CircularBuffer {
 
   /**
    * Remove the least recent (the first added) item from the buffer.
+   * 
+   * Worst Time Complexity
+   * O(1)
+   * 
    */
   remove() {
     const item = this._buffer[this._start];
@@ -66,6 +73,9 @@ class CircularBuffer {
   /**
    * Get the item at given index.
    * 
+   * Worst Time Complexity
+   * O(1)
+   * 
    * @param {number} index
    * @returns {any} item null if no item exists at given index.
    */
@@ -93,6 +103,10 @@ class CircularBuffer {
     } else {
       return (this._capacity - this._start) + this._end;
     }
+  }
+
+  capacity() {
+    return this._capacity;
   }
 
   /**
@@ -168,6 +182,9 @@ class CircularBuffer {
 
   /**
    * Resize the buffer.
+   * 
+   * Worst Time Complexity
+   * O(N)
    * 
    * TODO: to refactor method! Here is a bug. Clone
    * 
