@@ -1,4 +1,5 @@
 // good resource to learn with summary - https://leetcode.com/explore/learn/card/linked-list/
+// https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/SequentialSearchST.java.html
 
 class Node {
   /**
