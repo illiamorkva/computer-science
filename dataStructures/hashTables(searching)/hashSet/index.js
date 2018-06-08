@@ -3,6 +3,8 @@
 
 /**
  * The hash set is one of the implementations of a set data structure to store no repeated values.
+ * As we know, it is easy and effective to insert a new value and check if a value is in a hash set or not.
+ * Therefore, typically, a hash set is used to check if a value has ever appeared or not.
  * 
  * By choosing a proper hash function, the hash table can achieve wonderful performance in both insertion and search.
  * 
@@ -73,6 +75,14 @@ class HashSet {
   }
   
   /**
+   * The strategy used in the built-in function is to move
+   * all the elements after ith element one position forward.
+   * That is to say, you have to move n - i times. So the time
+   * complexity to remove an element from an array list will be O(n). 
+   * Hopefully, there are two solutions to reduce the time complexity from O(n) to O(1).
+   * 1. Swap
+   * 2. Linked List
+   * 
    * @param {number} key
    * @returns {void}
    */

@@ -1,3 +1,5 @@
+// https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/SeparateChainingHashST.java.html
+
 class Node {
   constructor(key, val, next) {
     this._key = key;
