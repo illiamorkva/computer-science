@@ -1,70 +1,178 @@
-class Node {
-  constructor(key, val, next) {
-    this._key = key;
-    this._val = val;
+// https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/SeparateChainingHashST.java.html
 
-    this._next = next;
-  }
-}
-
-// ordered iteration - no
+/**
+ * The {@code SeparateChainingHashST} class represents a symbol table of generic 
+ * key-value pairs (Hash Map).
+ * A symbol table implements the associative array abstraction:
+ * when associating a value with a key that is already in the symbol table,
+ * the convention is to replace the old value with the new value.
+ * This class uses the convention that
+ * values cannot be {@code null}—setting the
+ * value associated with a key to {@code null} is equivalent to deleting the key
+ * from the symbol table.
+ * This implementation uses a separate chaining hash table.
+ * It requires that the key type overrides the {@code equals()} and {@code hashCode()} methods.
+ * 
+ * Time Complexity.
+ * The expected time per put, contains, or remove
+ * operation is constant, subject to the uniform hashing assumption.
+ * The size, and isEmpty operations take constant time.
+ * Construction takes constant time.
+ */
 class SeparateChainingHashST {
-  constructor() {
-    // number of chains
-    // typical choice: N / 5 => constant-time ops
-    this._M = 97;
-    // array of chains
-    this._st = new Array(this._M);
-    // explicit array doubling
-    // and halving code omitted
+  constructor(m) {
+    this._INIT_CAPACITY = 4;
+    this._n = 0; // number of key-value pairs
+    this._m = m; // hash table size
+    this._st = new Array(this._m) // array of linked-list symbol tables (SequentialSearchST)
+
+    for (let i = 0; i < m; i++) {
+      this._st[i] = new SequentialSearchST();
+    }
   }
 
+  /**
+   * Resize the hash table to have the given number of chains,
+   * rehashing all of the keys.
+   * @param {number} chains 
+   */
+  _resize(chains) {
+    const temp = new SeparateChainingHashST(chains);
+
+    for (let i = 0; i < this._m; i++) {
+      this._st[i].keys().forEach(key =>
+        temp.put(key, this._st[i].get(key))
+      );
+    }
+
+    this._m = temp._m;
+    this._n = temp._n;
+    this._st = temp._st;
+  }
+
+  /**
+   * Hash value between 0 and m-1.
+   *
+   * @param {Key} key 
+   */
   _hash(key) {
-    // return key.hashCode()
-    // TODO: implement hash function
+    /* @param {string} key 
+      let hash = 0;
+    
+      for (let i = 0; i < key.length; i++) {
+        hash += key.charCodeAt(i) * (i+1);
+      }
+      
+      return hash % this._m;
+    */
+
+    return (key.hashCode() & 0x7fffffff) % this._m; // TODO: hashCode()
   }
 
-  /*
-  * Search
-  * Average/Amortized Time Complexity
-  * O(1)
-  * Worst Time Complexity
-  * O(N) ?
-  * O(log N) - under uniform hashing assumption
-  */
+  /**
+   * Returns the number of key-value pairs in this symbol table.
+   */
+  size() {
+    return this._n;
+  }
+
+  /**
+   * Returns true if this symbol table is empty.
+   */
+  isEmpty() {
+    return this.size() === 0;
+  }
+
+
+  /**
+   * Returns true if this symbol table contains the specified key.
+   * 
+   * @param {Key} key 
+   */
+  contains(key) {
+    if (key == null) {
+      throw new Error('argument to contains() is null');
+    }
+    return this.get(key) != null;
+  }
+
+  /**
+   * Returns the value associated with the specified key in this symbol table.
+   * 
+   * @param {Key} key 
+   */
   get(key) {
-    let i = this._hash(key);
-
-    // x - Node instance
-    for (let x = this._st[i]; x != null; x = x._next) {
-      if (key == x._key) { // key.equals(x._key)
-        return x._val;
-      }
+    if (key == null) {
+      throw new Error('argument to get() is null');
     }
 
-    return null;
+    let i = this._hash(key);
+
+    return this._st[i].get(key);
   }
 
-  /*
-  * Insert
-  * Average/Amortized Time Complexity
-  * O(1)
-  * Worst Time Complexity
-  * O(N) ?
-  * O(log N) - under uniform hashing assumption
-  */
+  /**
+   * Inserts the specified key-value pair into the symbol table, overwriting the old 
+   * value with the new value if the symbol table already contains the specified key.
+   * Deletes the specified key (and its associated value) from this symbol table
+   * if the specified value is {@code null}.
+   * 
+   * @param {Key} key 
+   * @param {Value} val 
+   */
   put(key, val) {
-    let i = this._hash(key);
-
-    for (let x = this._st[i]; x != null; x = x._next) {
-      if (key == x._key) {
-        x._val = val;
-
-        return;
-      }
+    if (key == null) {
+      throw new Error('first argument to put() is null');
+    }
+    if (val == null) {
+      this.delete(key);
+      return;
     }
 
-    this._st[i] = new Node(key, val, this._st[i]);
+    // double table size if average length of list >= 10
+    if (this._n >= 10 * this._m) {
+      this._resize(2 * this._m);
+    }
+
+    let i = this._hash(key);
+    if (!this._st[i].contains(key)) {
+      this._n++;
+    }
+
+    this._st[i].put(key, val);
   }
 
+  delete(key) {
+    if (key == null) {
+      throw new Error('argument to delete() is null');
+    }
+
+    let i = this._hash(key);
+
+    if (this._st[i].contains(key)) {
+      this._n--;
+    }
+
+    this._st[i].delete(key);
+
+    // halve table size if average length of list <= 2
+    if (this._m > this._INIT_CAPACITY && this._n <= 2 * this._m) {
+      this._resize(this._m / 2);
+    }
+  }
+
+  /**
+   * Return keys in symbol table as an array.
+   */
+  keys() {
+    const array = new Array();
+
+    for (let i = 0; i < this._m; i++) {
+      this._st[i].keys().forEach(key =>
+        array.push(key)
+      );
+    }
+
+    return array;
+  }
 }
