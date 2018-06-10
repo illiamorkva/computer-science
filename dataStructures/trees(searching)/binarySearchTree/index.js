@@ -62,6 +62,10 @@ class LinkedQueueOfKeys {
 
 // ----------------------------------------------
 
+// https://algs4.cs.princeton.edu/32bst/index.php#3.3
+// https://algs4.cs.princeton.edu/32bst/BST.java.html
+// https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/
+
 class Node {
   constructor(key, val) {
     this._key = key;
