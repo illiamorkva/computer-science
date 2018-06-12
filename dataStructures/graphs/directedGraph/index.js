@@ -1,68 +1,149 @@
-// Representation: adjacency lists (using Bag data type)
+/**
+ * Representation: adjacency lists (using Bag data type).
+ * 
+ * Time Complexity.
+ * All operations take constant time (in the worst case) except
+ * iterating over the vertices adjacent from a given vertex, which takes
+ * time proportional to the number of such vertices.
+ */
 class Digraph {
   /**
    * Create an empty digraph with V vertices.
    * 
-   * @param {int} V 
+   * @param {number} V 
    */
   constructor(V) {
-    
-    this._V = V;
+    this._E = 0; // number of edges in this digraph
+    this._indegree = new Array(V); // indegree[v] = indegree of vertex v
+
+    this._V = V; // number of vertices in this digraph
     this._adj = new Array(V); // adjacency lists
 
     for (let vrtx = 0; vrtx < V; vrtx++) {
       this._adj[vrtx] = new Bag();
+
+      this._indegree[vrtx] = 0;
     }
   }
   
   /**
-   * Add a directed edge v -> w.
+   * Adds the directed edge v -> w to this digraph.
    * 
-   * @param {int} v 
-   * @param {int} w
+   * @param {number} v 
+   * @param {number} w
    * @returns {void}
    */
   addEdge(v, w) {
+    this._validateVertex(v);
+    this._validateVertex(w);
+
     this._adj[v].add(w);
+
+    this._indegree[w]++;
+    this._E++;
   }
 
   /**
-   * Vertices pointing from v.
+   * Returns the vertices pointing from v in this digraph.
    * 
-   * @param {int} v
+   * @param {number} v
    * @returns {Iterable<int>} "Iterator"(Bag) for vertices pointing from v.
    */
   adj(v) {
+    this._validateVertex(v);
+
     return this._adj[v];
   }
 
   /**
-   * Number of vertices.
+   * Returns the number of vertices in this digraph.
    * 
-   * @returns {int}
+   * @returns {number}
    */
-  V() {}
+  V() {
+    return this._V;
+  }
 
   /**
-   * Number of edges.
+   * Returns the number of edges in this digraph.
    *
-   * @returns {int}
+   * @returns {number}
    */
-  E() {}
+  E() {
+    return this._E;
+  }
 
   /**
-   * Reverse of this digraph.
+   * Throw an error unless {@code 0 <= v < V}
+   * 
+   * @param {number} v 
+   */
+  _validateVertex(v) {
+    if (v < 0 || v >= this._V) {
+      throw new Error('no valid vertex');
+    }
+  }
+
+
+  /**
+   * Returns the number of directed edges incident/pointing from vertex {@code v}
+   * 
+   * @param {number} v 
+   */
+  outdegree(v) {
+    this._validateVertex(v);
+
+    return this._adj[v].size();
+  }
+
+  /**
+   * Returns the number of directed edges incident/pointing to vertex {@code v}.
+   * 
+   * @param {number} v 
+   */
+  indegree(v) {
+    this._validateVertex(v);
+
+    return this._indegree[v];
+  }
+
+  /**
+   * Returns the reverse of the digraph.
    * 
    * @returns {Digraph}
    */
-  reverse() {}
+  reverse() {
+    const reverse = new Digraph(this._V);
+
+    for (let v = 0; v < this._V; v++) {
+      this._adj[v].entries().forEach(w => {
+        reverse.addEdge(w, v);
+      });
+    }
+
+    return reverse;
+  }
 
   /**
-   * String representation.
+   * Returns a string representation of the graph.
    * 
    * @returns {string}
    */
-  toString() {}
+  toString() {
+    let s = `${this._V} vertices, ${this._E} edges.`;
+
+    for (let v = 0; v < this._V; v++) {
+      s = `${s} ${v}:`;
+      
+      this._adj[v].entries().forEach(w => {
+        s = `${s} ${w},`;
+      });
+
+      s = `${s}.`;
+    }
+
+    return s;
+  }
 }
 
 // sample client
