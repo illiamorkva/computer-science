@@ -62,27 +62,38 @@ class Edge {
    * 
    * @returns {double}
    */
-  weight() {}
+  weight() {
+    return this._weight;
+  }
 
   /**
    * String representation.
    * 
    * @returns {string}
    */
-  toString() {}
+  toString() {
+    return `${this._v}-${this._w} ${this._weight}`;
+  }
 }
 
 /**
  * Conventions. Allow self-loops and parallel edges.
+ * 
+ * Time Complexity.
+ * All operations take constant time (in the worst case) except
+ * iterating over the edges incident to a given vertex, which takes
+ * time proportional to the number of such edges.
  */
 class EdgeWeightedGraph {
   
   /**
    * Create an empty graph with V vertices.
    * 
-   * @param {int} V 
+   * @param {number} V 
    */
   constructor(V) {
+    this._E = 0;
+
     this._V = V;
 
     // same as Graph but adjacency lists of Edges instead of integers
@@ -94,7 +105,7 @@ class EdgeWeightedGraph {
   }
 
   /**
-   * Add weighted edge e to this graph.
+   * Adds the undirected edge {@code e} to this edge-weighted graph.
    * 
    * @param {Edge} e 
    * @returns {void}
@@ -103,46 +114,113 @@ class EdgeWeightedGraph {
     let v = e.either();
     let w = e.other(v);
 
+    this._validateVertex(v);
+    this._validateVertex(w);
+
     // add edge to both adjacency lists
     this._adj[v].add(e);
     this._adj[w].add(e);
+
+    this._E++;
   }
 
   /**
-   * Edges incident to v.
+   * Edges incident/pointing to v.
    * 
-   * @param {int} v
+   * @param {number} v
    * @returns {Iterable<Edge>}
    */
   adj(v) {
+    this._validateVertex(v);
+
     return this._adj[v];
   }
 
   /**
-   * All edges in this graph.
+   * Returns all edges in this edge-weighted graph.
    * 
    * @returns {Iterable<Edge>}
    */
-  edges() {}
+  edges() {
+    const list = new Bag();
+
+    for (let v = 0; v < this._V; v++) {
+      let selfLoops = 0;
+
+      this._adj[v].entries().forEach(e => {
+        if (e.other(v) > v) {
+          list.add(e);
+        }
+        // add only one copy of each self loop (self loops will be consecutive)
+        else if (e.other(v) == v) {
+          if (selfLoops % 2 == 0) {
+            list.add(e);
+          }
+
+          selfLoops++;
+        }
+      });
+    }
+
+    return list;
+  }
 
   /**
-   * Number of vertices.
+   * Returns the number of vertices in this edge-weighted graph.
    * 
-   * @returns {int}
+   * @returns {number}
    */
-  V() {}
+  V() {
+    return this._V;
+  }
 
   /**
-   * Number of edges.
+   * Returns the number of edges in this edge-weighted graph.
    * 
-   * @returns {int}
+   * @returns {number}
    */
-  E() {}
+  E() {
+    this._E;
+  }
+
+  _validateVertex(v) {
+    if (v < 0 || v >= this._V) {
+      throw new Error('no valid vertex');
+    }
+  }
+
+  /**
+   * Returns the degree of vertex {@code v}.
+   * 
+   * @param {number} v 
+   */
+  degree(v) {
+    this._validateVertex(v);
+
+    return this._adj[v].size();
+  }
 
   /**
    * String representation.
    * 
+   * Time Complexity.
+   * This method takes time proportional to E + V.
+   * 
    * @returns {string}
    */
-  toString() {}
+  toString() {
+    let s = `${this._V} ${this._E}.`;
+
+    for (let v = 0; v < this._V; v++) {
+      s = `${s} ${v}: `;
+
+      this._adj[v].entries().forEach(e => {
+        s = `${s} ${e},`;
+      });
+
+      s = `${s}.`;
+    }
+
+    return s;
+  }
 }
