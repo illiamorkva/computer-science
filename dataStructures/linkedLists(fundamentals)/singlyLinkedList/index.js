@@ -20,6 +20,7 @@ class Node {
 class SinglyLinkedList {
   constructor() {
     this._head = null;
+    // TODO: add the tail pointer to have O(1) time complexity of adding new item at tail.
   }
 
   // Traverse the linked list to get element by index.
