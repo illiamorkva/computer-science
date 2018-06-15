@@ -67,4 +67,8 @@ https://www.geeksforgeeks.org/differences-between-hashmap-and-hashtable-in-java/
 https://stackoverflow.com/questions/47838841/hashtable-hashmap-hashset-hash-table-concept-in-java-collection-framework
 http://www.programering.com/a/MDN2UzNwATY.html
 
-8. 
+8. The difference between amortized, average, and worst-case time guarantees.
+https://stackoverflow.com/questions/7333376/difference-between-average-case-and-amortized-analysis/7335098#7335098
+https://gist.github.com/jconnolly/5acf05f279a7e9e40371
+
+9.

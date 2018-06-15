@@ -8,5 +8,13 @@
 /**
  * 1. Patricia trie of suffixes of a string.
  * 2. Linear-time construction.
+ * 
+ * Time Complexity.
+ * The naive implementation for generating a suffix tree
+ * going forward requires O(n^2) or even O(n^3) time complexity
+ * in big O notation, where n is the length of the string. By exploiting
+ * a number of algorithmic techniques, Ukkonen reduced this to O(n) (linear)
+ * time, for constant-size alphabets, and O(n log n) in general,
+ * matching the runtime performance of the earlier two algorithms.
  */
 class SuffixTree {}
