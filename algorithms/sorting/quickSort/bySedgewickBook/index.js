@@ -2,6 +2,7 @@
 
 /**
  * It is a randomized algorithm, because it randomly shuffles the array before sorting it.
+ * Not stable.
  * 
  * Time Complexity.
  * Worst Case: O(N^2)

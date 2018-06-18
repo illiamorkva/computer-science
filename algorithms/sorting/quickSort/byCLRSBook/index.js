@@ -1,6 +1,8 @@
 // good explanation -  https://www.geeksforgeeks.org/quick-sort/
 
 /**
+ * Not stable.
+ * 
  * Time Complexity.
  * Worst Case: O(N^2)
  * Average Case: O(N * log N)
