@@ -6,14 +6,16 @@
  * Average Case: O(N * log N)
  * Best Case: O(N * log N)
  * 
+ * O(N * log N) probabilistic guarantee; fastest in practice.
+ * 
  * Space Complexity:
  * O(log N), 
- * Since the best case makes at most O(log n)
- * nested recursive calls, it uses O(log n) space.
+ * Since the best case makes at most O(log N)
+ * nested recursive calls, it uses O(log N) space.
  * However, without Sedgewick's trick to limit
  * the recursive calls, in the worst case quicksort
- * could make O(n) nested recursive calls and need
- * O(n) auxiliary space.
+ * could make O(N) nested recursive calls and need
+ * O(N) auxiliary space.
  * 
  */
 class QuickSortInPlace {
