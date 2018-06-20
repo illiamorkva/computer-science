@@ -6,18 +6,14 @@ class Paths {
    * @param {Graph} G 
    * @param {int} s 
    */
-  constructor(G, s) {
-
-  }
+  constructor(G, s) {}
 
   /**
    * Is there a path from s to v?
    * 
    * @param {int} v 
    */
-  hasPathTo(v) {
-
-  }
+  hasPathTo(v) {}
 
   /**
    * Path from s to v; null if no such path
@@ -25,11 +21,7 @@ class Paths {
    * @param {int} v 
    * @returns {Iterable<int>}
    */
-  pathTo(v) {
-
-  }
-
-
+  pathTo(v) {}
 }
 
 // sample client
