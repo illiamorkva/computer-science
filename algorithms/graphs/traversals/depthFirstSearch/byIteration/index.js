@@ -1,4 +1,5 @@
 // https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/NonrecursiveDFS.java.html
+// https://www.geeksforgeeks.org/iterative-depth-first-traversal/
 
 /**
  * Time Complexity.
@@ -34,7 +35,7 @@ class NonrecursiveDFS {
     stack.push(s);
 
     while (!stack.isEmpty()) {
-      let v = stack.peek(); // Returns (but does not remove) the item most recently added to this stack
+      let v = stack.peek(); // returns (but does not remove) the item most recently added to this stack
 
       if (adj[v].hasNext()) {
         let w = adj[v].next();
