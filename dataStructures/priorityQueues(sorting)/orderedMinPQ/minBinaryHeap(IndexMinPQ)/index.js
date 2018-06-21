@@ -60,7 +60,7 @@ class IndexMinPQ {
   }
 
   /**
-   * Associates key with index {@code i}.
+   * Associates key with index {@code i}. (aka. add_with_priority())
    * @param {number} i 
    * @param {Key} key 
    */
@@ -104,7 +104,7 @@ class IndexMinPQ {
   }
 
   /**
-   * Removes a minimum key and returns its associated index.
+   * Removes a minimum key and returns its associated index. (aka. extract_min())
    */
   delMin() {
     if (this._n == 0) {
@@ -171,7 +171,7 @@ class IndexMinPQ {
   }
 
   /**
-   * Decrease the key associated with index {@code i} to the specified value.
+   * Decrease the key associated with index {@code i} to the specified value. (aka. decrease_priority())
    * 
    * @param {number} i 
    * @param {Key} key 
