@@ -261,28 +261,51 @@ class IndexMinPQ {
   // Heap helper functions.
 
   /**
-   * @param {number} k 
+   * (aka. heapifyUp)
+   * 
+   * @param {number} k customStartIndex
    */
   _swim(k) {
+    // take last element (last in array or the bottom left in a tree) in
+    // a heap container and lift him up until we find the parent element
+    // that is less then the current new one
+
+    // k = currentIndex
+    // hasParent(currentIndex) && lessThan(heapContainer[currentIndex], parent(currentIndex))
     while (k > 1 && this._greater(k / 2, k)) {
+      // swap(currentIndex, getParentIndex(currentIndex))
       this._exch(k, k / 2);
+      // currentIndex = getParentIndex(currentIndex)
       k = k / 2;
     }
   }
 
+  /**
+   * (aka. heapifyDown)
+   * 
+   * @param {number} k root of heap
+   */
   _sink(k) {
-    while (2 * k <= this._n) {
+    // compare the root element to its children and swap root with the smallest
+    // of children. do the same for next children after swap
+    while (2 * k <= this._n) { // hasLeftChild(k), k - currentIndex
+      // children of node at k are 2 * k and 2 * k + 1
       let j = 2 * k;
 
+      // hasRightChild(currentIndex) && lessThan(rightChild(currentIndex), leftChild(currentIndex)
       if (j < this._n && this._greater(j, j + 1)) {
+        // nextIndex
         j++;
       }
 
+      // lessThan(heapContainer[currentIndex], heapContainer[nextIndex])
       if (!this._greater(k, j)) {
         break;
       }
 
+      // swap(currentIndex, nextIndex);
       this._exch(k, j);
+      // currentIndex = nextIndex;
       k = j;
     }
   }
