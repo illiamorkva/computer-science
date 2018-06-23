@@ -1,7 +1,7 @@
 // good explanation -  https://www.geeksforgeeks.org/quick-sort/
 
 /**
- * Not stable.
+ * Not Stable.
  * 
  * Time Complexity.
  * Worst Case: O(N^2)
