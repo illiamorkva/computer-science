@@ -15,7 +15,7 @@
  * O(N * log N)
  * 
  * Time complexity of heapify is O(log N).
- * Time complexity of createAndBuildHeap() is O(N) and
+ * Time complexity of building a heap is O(N) and
  * overall time complexity of Heap Sort is O(N * log N).
  * 
  * Space Complexity.
