@@ -23,10 +23,10 @@ class SeparateChainingHashST {
   constructor(m) {
     this._INIT_CAPACITY = 4;
     this._n = 0; // number of key-value pairs
-    this._m = m; // hash table size
+    this._m = m || 20; // hash table size
     this._st = new Array(this._m) // array of linked-list symbol tables (SequentialSearchST)
 
-    for (let i = 0; i < m; i++) {
+    for (let i = 0; i < this._m; i++) {
       this._st[i] = new SequentialSearchST();
     }
   }
@@ -56,18 +56,21 @@ class SeparateChainingHashST {
    * @param {Key} key 
    */
   _hash(key) {
-    /* @param {string} key 
-      let hash = 0;
-    
-      for (let i = 0; i < key.length; i++) {
-        hash += key.charCodeAt(i) * (i+1);
-      }
-      
-      return hash % this._m;
-    */
-
-    return (key.hashCode() & 0x7fffffff) % this._m; // TODO: hashCode()
+    return Math.floor(this._hashCodeOfString(key) % this._m); // (key.hashCode() & 0x7fffffff) % this._m;
   }
+
+  _hashCodeOfString(s) {
+    // https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0
+    let h = 0, l = s.length, i = 0;
+
+    if ( l > 0 ) {
+      while (i < l) {
+        h = (h << 5) - h + s.charCodeAt(i++) | 0;
+      }
+    }
+
+    return h;
+  };
 
   /**
    * Returns the number of key-value pairs in this symbol table.
