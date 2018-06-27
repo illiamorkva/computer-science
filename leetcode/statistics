@@ -1,4 +1,4 @@
-!number (!784) - tried but did not solve and understand.
+!number (!784) - tried but did not solve and understand solutions.
 
 Solved:
 
@@ -27,21 +27,23 @@ May
 June
 25 - 2,   13,
 26 - 11,  3,   7,
+27 - 825. 824
 
-Solved with help:
+Solved with help (didn't solve or solved suboptimally):
+
+824,
+
+Solved by myself but need attention (Brute Force or painfully):
+
+561, 169, 686, 268, 326, 278, 136, 191
+206, 83,  682, 232, 51,  7,   825. 824
+
+To solve problems next:
 
 122, 283, 14, 557, 696, 606, 541, 521
 453, 628, 26, 27,  237, 21,  496, 225
 46,  47,  78, 90,  52,  2,   13,  11
-3,
-
-Solved by myself but need attention:
-
-561, 169, 686, 268, 326, 278, 136, 191
-206, 83,  682, 232, 51,  7,
-
-To solve problems next:
-
+3
 
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -50,30 +52,33 @@ To solve problems next:
 
 To learn and understand:
 
-1. Example of time complexity analysis from 686
+1. Examples of time complexity analysis
 https://discuss.leetcode.com/topic/105580/repeated-string-match/6
+https://leetcode.com/problems/goat-latin/discuss/128368/Java-11-ms-solution-with-time-and-space-complexity-explanation
+https://leetcode.com/problems/implement-queue-using-stacks/solution/
 
 2. https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms
 
 3. "String is encoded using ASCII format. This will not work with Unicode value where one character may be more than 1 byte."
 
-4. Example of time complexity analysis from 232
-https://leetcode.com/problems/implement-queue-using-stacks/solution/
-
-5. https://leetcode.com/problems/permutations-ii/discuss/18594/Really-easy-Java-solution-much-easier-than-the-solutions-with-very-high-vote -
+4. https://leetcode.com/problems/permutations-ii/discuss/18594/Really-easy-Java-solution-much-easier-than-the-solutions-with-very-high-vote -
 how does it work - if(i>0 &&nums[i-1]==nums[i] && !used[i-1])?
 
-6. A general approach to backtracking questions in Java (Subsets, Permutations, Combination Sum, Palindrome Partioning)
+5. A general approach to backtracking questions in Java (Subsets, Permutations, Combination Sum, Palindrome Partioning)
 https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)?page=3
 
-7. What is the difference between HashSet, HashMap and hash table?
+6. What is the difference between HashSet, HashMap and hash table?
 https://www.quora.com/What-is-the-difference-between-HashSet-HashMap-and-hash-table-How-do-they-behave-in-a-multi-threaded-environment
 https://www.geeksforgeeks.org/differences-between-hashmap-and-hashtable-in-java/
 https://stackoverflow.com/questions/47838841/hashtable-hashmap-hashset-hash-table-concept-in-java-collection-framework
 http://www.programering.com/a/MDN2UzNwATY.html
 
-8. The difference between amortized, average, and worst-case time guarantees.
+7. The difference between amortized, average, and worst-case time guarantees.
 https://stackoverflow.com/questions/7333376/difference-between-average-case-and-amortized-analysis/7335098#7335098
 https://gist.github.com/jconnolly/5acf05f279a7e9e40371
+
+8. Time Complexity analysis
+http://www.comp.nus.edu.sg/~cs1020/tut/15s2/tut09ans/T9_ans.pdf
+http://www.iitk.ac.in/esc101/2009Jan/lecturenotes/timecomplexity/TimeComplexity_using_Big_O.pdf
 
 9.
