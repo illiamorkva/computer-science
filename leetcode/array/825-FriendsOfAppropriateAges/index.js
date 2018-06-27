@@ -76,3 +76,48 @@ let numFriendRequests = function(ages) {
 
   return counter;
 };
+
+/**
+ * Approach #1: Counting
+ * 
+ * Time Complexity.
+ * O(a^2 + n),
+ * where n is the number of people and a is the number of ages.
+ * 
+ * Space Complexity.
+ * O(a),
+ * the space used to store count, where a is the number of ages.
+ * 
+ * @param {number[]} ages
+ * @return {number}
+ */
+var numFriendRequests = function(ages) {
+  const countOfPeople = new Array(121).fill(0);
+  let result = 0;
+  
+  for (let i = 0; i < ages.length; i++) {
+    countOfPeople[ages[i]]++;
+  }
+  
+  for (let ageA = 0; ageA < countOfPeople.length; ageA++) {
+    let countAgeA = countOfPeople[ageA];
+    
+    for (let ageB = 0; ageB < countOfPeople.length; ageB++) {
+      let countAgeB = countOfPeople[ageB];
+
+      if (ageB <= 0.5 * ageA + 7 ||
+          ageB > ageA ||
+          ageB > 100 && ageA < 100) {
+        continue;
+      } else {
+        result += countAgeA * countAgeB;
+
+        if (ageA === ageB) {
+          result -= countAgeA;
+        }
+      }
+    }
+  }
+  
+  return result;
+};
