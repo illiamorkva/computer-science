@@ -86,7 +86,7 @@ let numFriendRequests = function(ages) {
  * 
  * Space Complexity.
  * O(a),
- * the space used to store count, where a is the number of ages.
+ * the space used to store countOfPeople, where a is the number of ages.
  * 
  * @param {number[]} ages
  * @return {number}
