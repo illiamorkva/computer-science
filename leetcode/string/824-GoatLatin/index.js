@@ -99,3 +99,52 @@ function convertWordToLatin(word, index) {
 
   return convertedWord;
 }
+
+/**
+ * Approach #1: String
+ * 
+ * Time Complexity.
+ * O(n)
+ * 
+ * Space Complexity.
+ * O(n^2)
+ * 
+ * @param {string} S
+ * @return {string}
+ */
+toGoatLatin = function(S) {
+  const set = new HashSet();
+  set.add('a');
+  set.add('A');
+  set.add('e');
+  set.add('E');
+  set.add('i');
+  set.add('I');
+  set.add('o');
+  set.add('O');
+  set.add('u');
+  set.add('U');
+  
+  let tail = "maa";
+  
+  let resultString = S
+  .split(' ')
+  .map((word) => {
+    if (set.contains(word.charAt(0))) {
+      word += tail;
+    } else {
+      let firstLetter = word.substring(0, 1);
+      
+      word = word.substring(1);
+      word += firstLetter;
+      word += tail;
+    }
+    
+    tail += 'a';
+     
+    return word;
+  })
+  .join(' ');
+  
+  return resultString;
+};
