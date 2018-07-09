@@ -40,11 +40,26 @@ class ResizingArrayStackOfStrings {
     // to avoid 'loitering'
     this.s[this.N] = null;
 
+    // shrink size of array if necessary
     if (this.N > 0 && this.N == this.s.length / 4) {
       this._resize(this.s.length / 2);
     }
 
     return item;
+  }
+
+  /**
+   * Returns (but does not remove) the item most recently added to this stack.
+   * 
+   * Worst Time Complexity
+   * O(1)
+   */
+  peek() {
+    if (this.isEmpty()) {
+      throw new Error('Stack is empty')
+    }
+
+    return this.s[this.N - 1]
   }
 
   _resize(capacity) {
