@@ -101,12 +101,14 @@ class SeparateChainingHashST {
 
   /**
    * Returns the value associated with the specified key in this symbol table.
+   * if key is null = HashMap treat it as 'null'
    * 
    * @param {Key} key 
    */
   get(key) {
     if (key == null) {
-      throw new Error('argument to get() is null');
+      // throw new Error('argument to get() is null');
+      key = 'null';
     }
 
     let i = this._hash(key);
@@ -119,13 +121,15 @@ class SeparateChainingHashST {
    * value with the new value if the symbol table already contains the specified key.
    * Deletes the specified key (and its associated value) from this symbol table
    * if the specified value is {@code null}.
+   * if key is null = HashMap treat it as 'null'
    * 
    * @param {Key} key 
    * @param {Value} val 
    */
   put(key, val) {
-    if (key == null) {
-      throw new Error('first argument to put() is null');
+    if (key === null) {
+      // throw new Error('first argument to put() is null');
+      key = 'null';
     }
     if (val == null) {
       this.delete(key);
@@ -177,5 +181,20 @@ class SeparateChainingHashST {
     }
 
     return array;
+  }
+
+  /**
+   * Return values in symbol table as an array.
+   */
+  values() {
+    const values = new Array();
+
+    const keys = this.keys();
+
+    keys.forEach((key) => {
+      values.push(this.get(key));
+    });
+
+    return values;
   }
 }
